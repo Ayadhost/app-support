@@ -8,6 +8,9 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            background-color: #ffffff;
+            color: #000000;
+            transition: all 0.3s ease;
         }
         h1 {
             font-size: 28px;
@@ -29,9 +32,24 @@
             margin: 20px 0;
             border-top: 2px solid #ccc;
         }
+        .toggle-button {
+            margin: 20px 0;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #ffffff;
+            border-radius: 5px;
+        }
+        .toggle-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
+    <button class="toggle-button" onclick="toggleDarkMode()">تغيير إلى الوضع الداكن</button>
+
     <div class="arabic">
         <h1>مرحبا بك في صفحة الدعم</h1>
         <p>
@@ -49,5 +67,22 @@
             <a href="mailto:ayadhost@gmail.com">ayadhost@gmail.com</a>
         </p>
     </div>
+
+    <script>
+        function toggleDarkMode() {
+            const body = document.body;
+            const button = document.querySelector('.toggle-button');
+
+            if (body.style.backgroundColor === 'rgb(255, 255, 255)' || body.style.backgroundColor === '') {
+                body.style.backgroundColor = '#000000';
+                body.style.color = '#ffffff';
+                button.textContent = 'تغيير إلى الوضع الفاتح';
+            } else {
+                body.style.backgroundColor = '#ffffff';
+                body.style.color = '#000000';
+                button.textContent = 'تغيير إلى الوضع الداكن';
+            }
+        }
+    </script>
 </body>
 </html>
