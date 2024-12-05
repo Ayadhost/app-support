@@ -35,20 +35,43 @@
         .toggle-button {
             margin: 20px 0;
             padding: 10px 20px;
-            font-size: 16px;
+            font-size: 20px;
             border: none;
             cursor: pointer;
             background-color: #007bff;
             color: #ffffff;
-            border-radius: 5px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease;
         }
         .toggle-button:hover {
             background-color: #0056b3;
         }
+        .toggle-button svg {
+            width: 24px;
+            height: 24px;
+        }
     </style>
 </head>
 <body>
-    <button class="toggle-button" onclick="toggleDarkMode()">تغيير إلى الوضع الداكن</button>
+    <button class="toggle-button" onclick="toggleDarkMode()">
+        <!-- Default icon: Sun -->
+        <svg id="dark-mode-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+    </button>
 
     <div class="arabic">
         <h1>مرحبا بك في صفحة الدعم</h1>
@@ -72,15 +95,32 @@
         function toggleDarkMode() {
             const body = document.body;
             const button = document.querySelector('.toggle-button');
+            const icon = document.getElementById('dark-mode-icon');
 
             if (body.style.backgroundColor === 'rgb(255, 255, 255)' || body.style.backgroundColor === '') {
+                // Switch to dark mode
                 body.style.backgroundColor = '#000000';
                 body.style.color = '#ffffff';
-                button.textContent = 'تغيير إلى الوضع الفاتح';
+                // Change icon to Moon
+                icon.innerHTML = `
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path>
+                `;
             } else {
+                // Switch to light mode
                 body.style.backgroundColor = '#ffffff';
                 body.style.color = '#000000';
-                button.textContent = 'تغيير إلى الوضع الداكن';
+                // Change icon to Sun
+                icon.innerHTML = `
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                `;
             }
         }
     </script>
